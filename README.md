@@ -1,126 +1,52 @@
-📂 Python File Organizer
+# 📂 Python File Organizer
 
-Clean up your messy directories in seconds.
+A Python script that **automatically organizes your files** into folders based on file types. Works for images, documents, videos, audio, scripts, archives, and more.
 
-This is a lightweight Python automation script designed to organize files within a specific folder. It scans the directory, detects file types based on extensions, creates appropriate subfolders (if they don't exist), and moves the files into their respective categories.
+## How It Works
 
-🧐 Why use this?
+1.  The script asks you to enter the **path of the folder** you want to organize. format = "path/to/your/folder"
+2.  It scans all files in the folder.
+3.  For each file, it checks its **extension** and **moves it** into a corresponding folder (creating the folder if it doesn’t exist).
+4.  Files with **unrecognized extensions** are left in place.
 
-If your Downloads or Desktop folder looks like a chaotic mix of images, installers, documents, and random zips, this script is the solution.
+## Supported Categories
 
-Before:
+| Category | File Extensions |
+| :--- | :--- |
+| **Images** | `jpg`, `jpeg`, `png`, `gif`, `bmp`, `tiff`, `svg`, `webp` |
+| **Documents** | `pdf`, `txt`, `docx`, `pptx`, `xls`, `xlsx`, `csv`, `odt`, `ods`, `rtf` |
+| **Audio** | `mp3`, `wav`, `flac`, `aac`, `ogg` |
+| **Video** | `mp4`, `avi`, `mkv`, `mov`, `wmv`, `flv` |
+| **Scripts** | `py`, `java`, `c`, `cpp`, `js`, `html`, `css` |
+| **Executables / Installers** | `exe`, `msi`, `apk`, `dmg` |
+| **Compressed / Archives** | `zip`, `rar`, `7z`, `iso` |
+| **Others** | Any file not listed above (will remain in the original folder) |
 
-/Downloads
-  ├── receipt.pdf
-  ├── holiday.jpg
-  ├── setup.exe
-  ├── meme.png
-  └── homework.docx
+## 🚀 Usage
 
+1.  Make sure **Python 3** is installed.
+2.  **Save the script** as `file_organizer.py`.
+3.  **Run the script** from your terminal:
 
-After:
+    ```bash
+    python file_organizer.py
+    ```
 
-/Downloads
-  ├── /pdf files
-  │     └── receipt.pdf
-  ├── /jpeg files
-  │     └── holiday.jpg
-  ├── /executables
-  │     └── setup.exe
-  ├── /png files
-  │     └── meme.png
-  └── /docx and word files
-        └── homework.docx
+4.  Enter the **full path of the folder** you want to organize when prompted.
 
+### Path Format Examples:
 
-🚀 How to Run
+* **Windows:** `C:\Users\YourName\Downloads\FolderToOrganize`
+* **Mac / Linux:** `/home/username/Downloads/FolderToOrganize`
 
-Prerequisites
+The script will organize your files and print a summary of file counts.
 
-You need Python 3.x installed on your system.
+## ✨ Customization
 
-Step-by-Step Usage
+* **Add or modify supported file types** by editing the `if-elif` sections in the script.
+* **Change folder names** in the `folder_maker_and_mover` function calls.
 
-Download the script Save the python file (e.g., organizer.py) to your computer.
+## ⚠️ Notes
 
-Open your Terminal or Command Prompt Navigate to the location where you saved the script.
-
-Run the command ```bash
-python organizer.py
-
-
-
-
-Enter the Target Path The script will display a welcome banner and ask for a path:
-
- -----------------------------------------------------------
-|               Enter the folder path here                |
- -----------------------------------------------------------
-Path: 
-
-
-Paste the absolute path of the folder you want to clean up.
-
-Windows Example: C:\Users\YourName\Downloads
-
-Mac/Linux Example: /Users/YourName/Downloads
-
-Done! The script will log every file it moves and provide a summary count at the end.
-
-🗂️ Supported File Formats
-
-The script automatically recognizes and sorts the following formats into these categories:
-
-Category
-
-Extensions
-
-Images
-
-.jpg, .jpeg, .png, .gif, .bmp, .tiff, .svg, .webp
-
-Videos
-
-.mp4, .avi, .mkv, .mov, .wmv, .flv
-
-Audio
-
-.mp3, .wav, .flac, .aac, .ogg
-
-Documents
-
-.pdf, .txt, .docx, .pptx, .xls, .xlsx, .csv, .odt, .ods, .rtf
-
-Coding/Web
-
-.py, .java, .c, .cpp, .js, .html, .css
-
-Installers
-
-.exe, .msi, .apk, .dmg
-
-Archives
-
-.zip, .rar, .7z, .iso
-
-Note: Files with extensions not listed above will be skipped and left in the main directory.
-
-⚙️ How it Works (Under the Hood)
-
-Input: Accepts a directory path from the user.
-
-Iteration: Loops through every file in that directory.
-
-Extraction: splits the filename to get the extension (e.g., .png).
-
-Decision: Checks the extension against a list of known types.
-
-Action: - Checks if the destination folder exists (e.g., png files).
-
-If not, it creates it using os.mkdir.
-
-Moves the file into that folder using shutil.move.
-
-⚠️ Disclaimer
-
-Always ensure you have a backup of important data before running automation scripts on your files. While this script is safe, file operations should always be done with care.
+* Make sure the folder path exists and you have **permission to modify its contents**.
+* The script **moves files**, so they will no longer remain in their original location.
